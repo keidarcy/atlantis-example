@@ -16,6 +16,3 @@ workflows:
       steps:
       - run: echo hi
       - apply
-    hello:
-      steps:
-      - run: echo hello
