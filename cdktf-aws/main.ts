@@ -3,6 +3,9 @@ import { App, S3Backend, TerraformStack } from 'cdktf';
 import { provider } from '@cdktf/provider-aws';
 import { S3Bucket } from './.gen/providers/aws/s3-bucket';
 
+const isProd = process.env.CDK_ENV === 'prod';
+const cdkEnv = isProd ? 'prod' : 'staging';
+
 class MyStack extends TerraformStack {
   constructor(scope: Construct, id: string) {
     super(scope, id);
@@ -48,6 +51,6 @@ class MyStack2 extends TerraformStack {
 }
 
 const app = new App();
-new MyStack(app, 'stack-1');
-new MyStack2(app, 'stack-2');
+new MyStack(app, `stack-1-${cdkEnv}`);
+new MyStack2(app, `stack-2-${cdkEnv}`);
 app.synth();
