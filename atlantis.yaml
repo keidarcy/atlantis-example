@@ -3,3 +3,19 @@ projects:
 - dir: cdktf-aws
   autoplan:
     when_modified: ["**/*.ts"]
+  workflow: myworkflow
+
+workflows:
+  myworkflow:
+    plan:
+      steps:
+      - run: cd cdktf-aws
+      - init
+      - plan
+    apply:
+      steps:
+      - run: echo hi
+      - apply
+    hello:
+      steps:
+      - run: echo hello
