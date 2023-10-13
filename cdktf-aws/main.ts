@@ -23,7 +23,7 @@ class MyStack extends TerraformStack {
     });
 
     new S3Bucket(this, 'bucket', {
-      bucket: 'test-04c2b2a32',
+      bucket: 'test-04c2b2a32-2',
     });
   }
 }
